@@ -13,7 +13,7 @@ class Code extends Model
         'code'
     ];
 
-
+    /** Función para revisar si el codigo existe en la BD */
     public static function exists($code){
         $exists = DB::table('codes')->where('code','=',$code)->first();
 
@@ -24,6 +24,7 @@ class Code extends Model
         return true;
     }
 
+    /** Función que valida si el código esta online (el valor siempre sera 0, porque no se que datos te va a devolver la API) */
     public static function isOnLine ($code){
 
         $online = DB::table('codes')->where([

@@ -58,7 +58,7 @@ $("#btnSaveCode").on('click', function(e){
           url: urlValidate,
           data: {code:code},
           success: function (response) {
-               console.log(response);
+               console.log(response); /** te imprimeen consola del navegador lo que devuelve el controlador */
 
                if(response == 'saved'){
                     alert('Código guardado en BD local, se procede a guardar en linea');
@@ -69,10 +69,15 @@ $("#btnSaveCode").on('click', function(e){
                     alert('Falló el proceso de guardar en BD local');
                }
 
+               
                if(response == 'isonline'){
                     alert('El código ya esta en linea');
                }
 
+               /**de momento siempre va ser 0 el valor de si esta en linea o no, ya que despues
+                * deque hagas post, te debería devolver si se guardo el codigo a traves de la api que uses
+                * suerte PARCE
+                */
                if(response == 'needtopost'){
                     alert('El código se guardara en linea');
                     $("#formSave").submit();

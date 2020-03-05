@@ -14,9 +14,9 @@ class CreateCodesTable extends Migration
     public function up()
     {
         Schema::create('codes', function (Blueprint $table) {
-            $table->bigIncrements('pk_code_id');
-            $table->string('code');
-            $table->boolean('isonline')->default(0);
+            $table->bigIncrements('pk_code_id'); //este es el id interno
+            $table->string('code'); //este es el codigo que se va a validar
+            $table->boolean('isonline')->default(0); //este campo es booleano, si es 0 no esta en linea
             $table->timestamps();
         });
     }

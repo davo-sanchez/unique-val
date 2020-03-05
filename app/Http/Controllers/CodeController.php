@@ -10,24 +10,37 @@ class CodeController extends Controller
 {
     public function __construct(){}
 
+    /** Funcion que muestra la vista del formulario: Ver web.php en la linea 19 */
     public function index() {
-        return view('validate');
+        return view('validate'); //este es ele nombre del archivo que esta en resources/views (se omite la extensión .blade.php)
     }
 
+
+    /** AQUI VIENE BUENO */
+
+    /** Los valores que devuelve esta función los veras en el archivo validate.blade.php ubicado en resources/views
+     * 
+     * en la linea 63
+     */
     public function storeLocal(Request $request){
 
+        /**Revisa si el codigo ya existe en la db local */
         if(Code::exists($request->code)){
 
+
+            /**En caso de que si exista en local, va a validar si ya se guardo en 'la nube' */
             if(Code::isOnLine($request->code)){
                 return 'isonline';
             } else {
+
+                /** en caso de que no devolvera que necesita hacerce post */
                 return 'needtopost';
             }
 
             
 
             
-        }else {
+        }else { /**Si no existe entonces hay que guardarlo */
             
             $code = new Code();
 
@@ -36,21 +49,12 @@ class CodeController extends Controller
             $save = $code->save();
 
             if($save) {
-                return 'saved';
+                return 'saved'; /**se guardó */
             }
 
-            return 'failed';
+            return 'failed'; /**Valio madres algo salio mal */
 
         }
-/*
-        $messages = [
-            'code.required' => 'El código es requerido',
-            'code.unique' => 'El código ya existe'
-        ];
-
-        $request->validate($request, [
-            'code' => 'required|unique:codes,code'
-        ]);*/
 
     }
 }
