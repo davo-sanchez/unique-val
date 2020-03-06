@@ -12,9 +12,14 @@
      <div class="container">
           <div class="row">
                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <form id="formSave" action="{{ route('after') }}" method="post">
+                    <form id="formSave" action="https://hooks.zapier.com/hooks/catch/5112906/omh1g1r" method="post">
                     @csrf
                     <input type="hidden" id="urlvalidate" value="{{ route('store.local') }}">
+                    <input type="hidden" name="id_referral" value="1037948744">
+                    <input type="hidden" name="full_name"  value="Jhon Escudero">
+                    <input type="hidden" name="email" value="jhon-escudero@hotmail.com">
+                    <input type="hidden" name="phone" value="314769950">
+                    <input type="hidden" name="city" value="colombia Antioquia Medellin">
                          <fieldset>
                               <legend>Validación de id</legend>
                               <div class="form-group">
